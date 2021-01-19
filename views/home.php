@@ -15,11 +15,15 @@
 
 		<tbody>
 			<?php
+
 				foreach ($contato as $cont) {
+					// remover caractéres especiais do número do celular
+					$cel = str_replace(array("(", ")", "-", " "), "", $cont->celular);
+
 					echo "<tr>
 						<td>{$cont->nome}</td>
 						<td>{$cont->endereco}, {$cont->num} - {$cont->cidade}-{$cont->sigla}</td>
-						<td>{$cont->celular}</td>
+						<td><a href='https://wa.me/55{$cel}' title='Conversar via WhatsApp' target='_blank'>{$cont->celular}</a></td>
 						<td><a href='' title='Visualizar'><span class='fas fa-eye'></span></a> &nbsp; <a href='?c=ContatoController&m=editarContato&id={$cont->id_contato}' title='Editar'><span class='fas fa-edit'></span></a> &nbsp; <a href='?c=ContatoController&m=apagarContato&id={$cont->id_contato}' title='Apagar'><span class='fas fa-trash'></span></a></td>
 					</tr>";
 				}
