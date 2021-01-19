@@ -1,7 +1,7 @@
 <?php require_once "_nav.php" ?>
 
 <main>
-	<h2>CONTATOS</h2>
+	<h2>MEUS CONTATOS</h2>
 
 	<table id="contatos">
 		<thead>
