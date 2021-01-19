@@ -4,16 +4,16 @@
 	require_once "models/ContatoDAO.class.php";
 
 	class ContatoController {
+		/*
+		 * INSERIR NOVO CONTATO
+		 */
 		public function inserirContato() {
+			$contatoDAO = new ContatoDAO();
+			$estado = $contatoDAO->listarEstados();
 			require_once "views/insert_contato.php";
 
-			// se o usuário cancelou a operação, voltar para listagem
-			if (isset($_POST["cancel"])) {
-				header("Location:index.php");
-			}
-
-			if (isset($_POST["insert"])) {
-				if (!empty($_POST["nome"]) && !empty($_POST["email"]) && !empty($_POST["telefone"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["bairro"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"]) && !empty($_POST["cep"]) && !empty($_POST["observacoes"])) {
+			if (isset($_POST["save"])) {
+				if (!empty($_POST["nome"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"])) {
 					$contato = new Contato(
 						null,
 						$_POST["nome"],
@@ -29,7 +29,6 @@
 						$_POST["observacoes"]
 					);
 
-					$contatoDAO = new ContatoDAO();
 					$contatoDAO->inserir($contato);
 
 					echo "<script>
@@ -37,22 +36,24 @@
 						location='index.php';
 					</script>";
 				}
+				else {
+					echo "<script>alert('PREENCHA OS CAMPOS OBRIGATÓRIOS!');</script>";
+				}
 			}
 		}
 
+		/*
+		 * EDITAR CONTATO
+		 */
 		public function editarContato() {
 			$contatoDAO = new ContatoDAO();
 			$ret = $contatoDAO->listarContato($_GET["id"]);
+			$estado = $contatoDAO->listarEstados();
 
 			require_once "views/edit_contato.php";
 
-			// se o usuário cancelou a operação, voltar para listagem
-			if (isset($_POST["cancel"])) {
-				header("Location:index.php");
-			}
-
 			if (isset($_POST["save"])) {
-				if (!empty($_POST["nome"]) && !empty($_POST["email"]) && !empty($_POST["telefone"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["bairro"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"]) && !empty($_POST["cep"]) && !empty($_POST["observacoes"])) {
+				if (!empty($_POST["nome"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"])) {
 					$contato = new Contato(
 						$_GET["id"],
 						$_POST["nome"],
@@ -75,9 +76,21 @@
 						location='index.php';
 					</script>";
 				}
+				else {
+					echo "<script>alert('PREENCHA OS CAMPOS OBRIGATÓRIOS!');</script>";
+				}
+			}
+
+			// se o usuário cancelou a operação, voltar para listagem
+			if (isset($_POST["cancel"])) {
+				echo "<script>location='index.php';</script>";
+				// header("Location:index.php");
 			}
 		}
 
+		/*
+		 * APAGAR CONTATO
+		 */
 		public function apagarContato() {
 			$contatoDAO = new ContatoDAO();
 			$contatoDAO->apagar($_GET["id"]);
