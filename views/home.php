@@ -18,8 +18,8 @@
 				foreach ($contato as $cont) {
 					echo "<tr>
 						<td>{$cont->nome}</td>
-						<td>{$cont->endereco}, {$cont->num} - {$cont->cidade}-{$cont->uf}</td>
-						<td>{$cont->telefone}</td>
+						<td>{$cont->endereco}, {$cont->num} - {$cont->cidade}-{$cont->sigla}</td>
+						<td>{$cont->celular}</td>
 						<td><a href='' title='Visualizar'><span class='fas fa-eye'></span></a> &nbsp; <a href='?c=ContatoController&m=editarContato&id={$cont->id_contato}' title='Editar'><span class='fas fa-edit'></span></a> &nbsp; <a href='?c=ContatoController&m=apagarContato&id={$cont->id_contato}' title='Apagar'><span class='fas fa-trash'></span></a></td>
 					</tr>";
 				}
