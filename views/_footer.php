@@ -1,5 +1,5 @@
 		<footer>
-			<p>Lucas Rafael de Oliveira Longuini - &copy; 2021</p>
+			<p>Lucas Rafael de Oliveira Longuini - &copy; <?php echo date("Y"); ?></p>
 		</footer>
 	</body>
 </html>
