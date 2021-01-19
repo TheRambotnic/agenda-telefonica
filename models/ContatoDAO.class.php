@@ -8,7 +8,9 @@
 		 * Listar todos os contatos
 		 */
 		public function listarContatos() {
-			$sql = "SELECT * FROM contatos";
+			$sql = "SELECT c.*, e.*
+					FROM contatos c
+					INNER JOIN estados e ON (c.id_estado = e.id_estado)";
 
 			try {
 				$stmt = $this->db->prepare($sql);
@@ -27,7 +29,10 @@
 		 * Listar apenas o contato solicitado
 		 */
 		public function listarContato($id) {
-			$sql = "SELECT * FROM contatos WHERE id_contato = $id";
+			$sql = "SELECT c.*, e.*
+					FROM contatos c
+					INNER JOIN estados e ON (c.id_estado = e.id_estado)
+					WHERE c.id_contato = $id";
 
 			try {
 				$stmt = $this->db->prepare($sql);
@@ -43,10 +48,29 @@
 		}
 
 		/*
+		 * Listar estados
+		 */
+		public function listarEstados() {
+			$sql = "SELECT * FROM Estados";
+
+			try {
+				$stmt = $this->db->prepare($sql);
+				$stmt->execute();
+
+				// retornar dados e fechar conexão
+				return $stmt->fetchAll(PDO::FETCH_OBJ);
+				$this->db = null;
+			}
+			catch(Exception $e) {
+				die("Erro ao listar os estados. " .$e->getMessage());
+			}
+		}
+
+		/*
 		 * Inserir um contato
 		 */
 		public function inserir($contato) {
-			$sql = "INSERT INTO Contatos (`nome`, `email`, `telefone`, `celular`, `endereco`, `num`, `bairro`, `cidade`, `uf`, `cep`, `observacoes`)
+			$sql = "INSERT INTO Contatos (`nome`, `email`, `telefone`, `celular`, `endereco`, `num`, `bairro`, `cidade`, `cep`, `observacoes`, `id_estado`)
 					VALUES	(?,?,?,?,?,?,?,?,?,?,?)";
 
 			try {
@@ -59,9 +83,9 @@
 				$stmt->bindValue(6, $contato->getNumero());
 				$stmt->bindValue(7, $contato->getBairro());
 				$stmt->bindValue(8, $contato->getCidade());
-				$stmt->bindValue(9, $contato->getUnidFed());
-				$stmt->bindValue(10, $contato->getCEP());
-				$stmt->bindValue(11, $contato->getObservacoes());
+				$stmt->bindValue(9, $contato->getCEP());
+				$stmt->bindValue(10, $contato->getObservacoes());
+				$stmt->bindValue(11, $contato->getUnidFed());
 				$stmt->execute();
 
 				// fechar conexão
@@ -77,7 +101,7 @@
 		 */
 		public function editar($contato) {
 			$sql = "UPDATE contatos
-					SET nome = ?, email = ?, telefone = ?, celular = ?, endereco = ?, num = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, observacoes = ?
+					SET nome = ?, email = ?, telefone = ?, celular = ?, endereco = ?, num = ?, bairro = ?, cidade = ?, cep = ?, observacoes = ?, id_estado = ?
 					WHERE id_contato = ?";
 
 			try {
@@ -90,9 +114,9 @@
 				$stmt->bindValue(6, $contato->getNumero());
 				$stmt->bindValue(7, $contato->getBairro());
 				$stmt->bindValue(8, $contato->getCidade());
-				$stmt->bindValue(9, $contato->getUnidFed());
-				$stmt->bindValue(10, $contato->getCEP());
-				$stmt->bindValue(11, $contato->getObservacoes());
+				$stmt->bindValue(9, $contato->getCEP());
+				$stmt->bindValue(10, $contato->getObservacoes());
+				$stmt->bindValue(11, $contato->getUnidFed());
 				$stmt->bindValue(12, $contato->getID());
 				$stmt->execute();
 
