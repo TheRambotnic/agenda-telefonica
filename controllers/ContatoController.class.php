@@ -52,7 +52,7 @@
 			}
 
 			if (isset($_POST["save"])) {
-				if (!empty($_POST["nome"]) && !empty($_POST["email"]) && !empty($_POST["telefone"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["bairro"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"]) && !empty($_POST["cep"])) {
+				if (!empty($_POST["nome"]) && !empty($_POST["email"]) && !empty($_POST["telefone"]) && !empty($_POST["celular"]) && !empty($_POST["endereco"]) && !empty($_POST["numero"]) && !empty($_POST["bairro"]) && !empty($_POST["cidade"]) && !empty($_POST["uf"]) && !empty($_POST["cep"]) && !empty($_POST["observacoes"])) {
 					$contato = new Contato(
 						$_GET["id"],
 						$_POST["nome"],
@@ -64,7 +64,8 @@
 						$_POST["bairro"],
 						$_POST["cidade"],
 						$_POST["uf"],
-						$_POST["cep"]
+						$_POST["cep"],
+						$_POST["observacoes"]
 					);
 
 					$contatoDAO->editar($contato);
