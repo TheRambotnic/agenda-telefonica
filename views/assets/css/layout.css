@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Verdana";
+	font-family: "Verdana", sans-serif;
 }
 
 header {
@@ -29,18 +29,17 @@ header .novo-contato {
 	text-decoration: none;
 	color: #000;
 	padding: 10px 15px;
-	background-color: #E0E0E0;
+	background-color: #E5E5E5;
 	border: 1px solid #000;
-	border-radius: 5px;
 }
 
 header .novo-contato:hover {
-	background-color: #3580B1;
+	background-color: #1167B1;
 	color: #FFF;
 }
 
 main {
-	padding: 20px 50px;
+	padding: 20px 60px;
 }
 
 .obg {
@@ -60,6 +59,21 @@ main {
 	padding: 15px;
 	text-align: center;
 	border-bottom: 2px solid #333;
+}
+
+#dados .bold {
+	font-weight: bold;
+}
+
+#dados .info {
+	padding: 5px 10px;
+	background-color: #FFF;
+	border: 1px solid #000;
+	font-family: "Arial", sans-serif;
+}
+
+#dados .info a {
+	font-family: "Arial", sans-serif;
 }
 
 .container {
@@ -98,13 +112,31 @@ main {
 
 #dados .btn {
 	display: flex;
-	justify-content: space-around;
+	padding: 0 20px;
+	justify-content: space-between;
+}
+
+#dados .btn a {
+	background-color: #777;
+	border: 1px solid #000;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+	margin-bottom: 20px;
+	text-decoration: none;
+	color: #FFF;
+	font-weight: bold;
+}
+
+#dados .btn a:hover {
+	background-color: #AAA;
 }
 
 .btn button {
 	margin-bottom: 15px;
-	padding: 10px 25px;
+	padding: 10px 40px;
 	font-size: 16px;
+	font-weight: bold;
 	border: 1px solid #000;
 }
 
@@ -154,11 +186,17 @@ main {
 
 #contatos td a span {
 	border: 1px solid #000;
-	padding: 5px;
-	color: #333;
+	padding: 5px 10px;
+	color: #000;
 }
 
 /* Botões de ação */
+#contatos .fa-eye,
+#contatos .fa-edit,
+#contatos .fa-trash {
+	background-color: #E5E5E5;
+}
+
 #contatos .fa-eye:hover {
 	background-color: #3FE0D0;
 	color: #000;
