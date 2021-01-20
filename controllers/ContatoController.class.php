@@ -5,6 +5,17 @@
 
 	class ContatoController {
 		/*
+		 * VISUALIZAR INFORMAÇÕES DO CONTATO
+		 */
+		public function visualizar() {
+			$contatoDAO = new ContatoDAO();
+			$ret = $contatoDAO->listarContato($_GET["id"]);
+			$estado = $contatoDAO->listarEstados();
+
+			require_once "views/view_contato.php";
+		}
+
+		/*
 		 * INSERIR NOVO CONTATO
 		 */
 		public function inserirContato() {
