@@ -44,15 +44,15 @@
 					<label>CEP: </label>
 
 					<input type="text" name="cidade" value="<?php if (isset($ret)) echo $ret[0]->cidade; ?>" />
-					<!-- <input type="text" name="uf" maxlength="2" value="<?php if (isset($ret)) echo $ret[0]->uf; ?>" /> -->
 					<select name="uf">
 						<?php
-							if (isset($ret)) {
-								echo "<option value='{$ret[0]->id_estado}'>{$ret[0]->sigla}</option>"; 
-							}
-
 							foreach ($estado as $uf) {
-								echo "<option value='{$uf->id_estado}'>{$uf->sigla}</option>";
+								if ($uf->id_estado == $ret[0]->id_estado) {
+									echo "<option value='{$uf->id_estado}' selected=''>{$uf->sigla}</option>";
+								}
+								else {
+									echo "<option value='{$uf->id_estado}'>{$uf->sigla}</option>";
+								}
 							}
 						?>
 					</select>

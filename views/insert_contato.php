@@ -44,7 +44,6 @@
 					<label>CEP: </label>
 
 					<input type="text" name="cidade" />
-					<!-- <input type="text" name="uf" maxlength="2" /> -->
 					<select name="uf">
 						<?php
 							foreach ($estado as $uf) {
@@ -59,8 +58,8 @@
 
 				<label>Observações: </label>
 				<br/>
-				<textarea maxlength="2000" name="observacoes" onkeyup="countChar(this)"></textarea>
-				<p id="observacoes">2000 caractéres restantes</p>
+				<textarea maxlength="1000" name="observacoes" onkeyup="countChar(this)"></textarea>
+				<p id="observacoes">1000 caractéres restantes</p>
 
 				<br/>
 				<span class="obg">* campos obrigatórios</span>
@@ -84,12 +83,14 @@
 
 	function countChar(val) {
 		var len = val.value.length;
-		if (len >= 2000) {
-			document.querySelector("#observacoes").innerHTML = "limite máximo de 2000 caractéres!";
+		var max = document.getElementsByTagName("textarea")[0].getAttribute("maxlength");
+		
+		if (len >= max) {
+			document.querySelector("#observacoes").innerHTML = "limite máximo de " +max+ " caractéres!";
 			document.querySelector("#observacoes").style.color = "#F00";
 		}
 		else {
-			document.querySelector("#observacoes").innerHTML = (2000 - len) + " caractéres restantes";
+			document.querySelector("#observacoes").innerHTML = (max - len) + " caractéres restantes";
 			document.querySelector("#observacoes").style.color = "#000";
 		}
 	}
