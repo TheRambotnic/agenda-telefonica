@@ -21,6 +21,7 @@ Este projeto tem como objetivo cadastrar contatos em um banco de dados MySQL inf
 - API WhatsApp para o chat de conversas
 
 ## Requisitos
+- Windows 7 ou superior
 - [XAMPP Control Panel](https://www.apachefriends.org/index.html)
 
 ## Instalação
@@ -32,4 +33,4 @@ abra o `xampp-control.exe` e inicie os serviços **Apache** e **MySQL**.
 <br>
 
 Abra o navegador e digite `localhost/phpmyadmin`. Clique na aba `Import`, clique em `Choose File` e selecione o arquivo `AgendaTelefonica.sql` 
-na pasta `db/` dentro da pasta da aplicação. Clique em `Go` e o banco de dados será criado. No navegador, digite `localhost` e clique na pasta da aplicação para executar.
+na pasta `db/` dentro da pasta da aplicação. Clique em `Go` e o banco de dados será criado. No navegador, digite `localhost` e clique na pasta da aplicação para executar o projeto.
