@@ -28,6 +28,8 @@ Após instalar o XAMPP, clone o repositório na pasta `htdocs` dentro da pasta d
 abra o `xampp-control.exe` e inicie os serviços **Apache** e **MySQL**.
 <br>
 > Caso tenha problemas com a inicialização do Apache, veja [este artigo](https://terminaldeinformacao.com/2018/12/12/como-resolver-problema-da-porta-80-ao-subir-apache-xampp-windows-10/) sobre como corrigir o erro da porta 80.
+
 <br>
+
 Abra o navegador e digite `localhost/phpmyadmin`. Clique na aba `Import`, clique em `Choose File` e selecione o arquivo `AgendaTelefonica.sql` 
 na pasta `db/` dentro da pasta da aplicação. Clique em `Go` e o banco de dados será criado. No navegador, digite `localhost` e clique na pasta da aplicação para executar.
