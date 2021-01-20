@@ -91,11 +91,9 @@
 					echo "<script>alert('PREENCHA OS CAMPOS OBRIGATÓRIOS!');</script>";
 				}
 			}
-
-			// se o usuário cancelou a operação, voltar para listagem
-			if (isset($_POST["cancel"])) {
+			else if (isset($_POST["cancel"])) {
+				// se o usuário cancelou a operação, voltar para listagem
 				echo "<script>location='index.php';</script>";
-				// header("Location:index.php");
 			}
 		}
 
@@ -104,10 +102,21 @@
 		 */
 		public function apagarContato() {
 			$contatoDAO = new ContatoDAO();
-			$contatoDAO->apagar($_GET["id"]);
-			echo "<script>
-				alert('Registro apagado!');
-				location='index.php';
-			</script>";
+			$ret = $contatoDAO->listarContato($_GET["id"]);
+			$estado = $contatoDAO->listarEstados();
+
+			require_once "views/del_contato.php";
+
+			if (isset($_POST["delete"])) {
+				$contatoDAO->apagar($_GET["id"]);
+				echo "<script>
+					alert('Registro apagado!');
+					location='index.php';
+				</script>";
+			}
+			else if (isset($_POST["reset"])) {
+				// se o usuário cancelou a operação, voltar para listagem
+				echo "<script>location='index.php';</script>";
+			}
 		}
 	}
