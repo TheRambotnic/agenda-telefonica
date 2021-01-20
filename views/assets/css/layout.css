@@ -76,6 +76,17 @@ main {
 	font-family: "Arial", sans-serif;
 }
 
+#dados .del-confirm {
+	padding: 20px;
+	border: 3px solid #F00;
+	background-color: #FFF;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	color: #F00;
+	margin: 10px;
+}
+
 .container {
 	padding: 20px;
 }
@@ -156,6 +167,16 @@ main {
 }
 
 .btn button[name="cancel"]:hover {
+	cursor: pointer;
+	background-color: #F66;
+}
+
+.btn button[name="delete"] {
+	background-color: #F22;
+	color: #FFF;
+}
+
+.btn button[name="delete"]:hover {
 	cursor: pointer;
 	background-color: #F66;
 }
