@@ -18,7 +18,7 @@
 
 	<body>
 		<header>
-			<h1><a href="index.php">Minha Agenda <?php echo date("Y") ?> <span class="fas fa-phone"></span></a></h1>
+			<h1><a href="index.php" title="Ir para página inicial">Minha Agenda <?php echo date("Y") ?> <span class="fas fa-phone"></span></a></h1>
 
 			<a href="?c=ContatoController&m=inserirContato" class="novo-contato"><span class="fas fa-phone-plus"></span> INSERIR NOVO CONTATO</a>
 		</header>
